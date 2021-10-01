@@ -19,14 +19,14 @@ done < /mnt/update_windows_protheus.txt
 #cp /root/inventory_creator/inventario_update_rm /root/update_rm
 #cp /root/inventory_creator/inventario_snapshot_rm /root/update_rm
 
-#git -C /root/update_rm pull
+git -C /root/update_protheus pull
 
-#git -C /root/update_rm add inventario_update_rm
-#git -C /root/update_rm add inventario_snapshot_rm
+git -C /root/update_protheus add inventario_update_rm
+git -C /root/update_protheus add inventario_snapshot_rm
 
-#git -C /root/update_rm commit -m "Inventario Atualizado"
+git -C /root/update_protheus commit -m "Inventario Atualizado"
 
-#git -C /root/update_rm push
+git -C /root/update_protheus push
 
 
 
