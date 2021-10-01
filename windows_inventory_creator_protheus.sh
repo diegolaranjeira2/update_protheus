@@ -21,8 +21,8 @@ done < /mnt/update_windows_protheus.txt
 
 git -C /root/update_protheus pull
 
-git -C /root/update_protheus add inventario_update_rm
-git -C /root/update_protheus add inventario_snapshot_rm
+git -C /root/update_protheus add inventario_update_protheus
+git -C /root/update_protheus add inventario_snapshot_protheus
 
 git -C /root/update_protheus commit -m "Inventario Atualizado"
 
