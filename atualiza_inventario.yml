@@ -1,0 +1,11 @@
+---
+- hosts: all
+  gather_facts: no
+  serial: 80
+    
+  tasks:
+           
+      
+     - name: Preenchendo Inventario
+       shell: /root/inventory_creator/windows_inventory_creator.sh
+

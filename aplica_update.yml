@@ -1,0 +1,36 @@
+---
+- hosts: all #categoria das maquinas dentro do arquivo de inventario
+  gather_facts: no
+  serial: 80
+    
+  tasks:
+           
+      
+     - name: Checando espaco em disco
+       win_shell: Get-PSDrive C | Select-Object Free | ft -HideTableHeaders
+       register : disk_space
+       
+     - block:
+         - debug:
+             msg: 'Diretorio C: nao tem espaco livre. Finalizando a execucao'
+         - meta: end_host
+       when: disk_space.stdout_lines[1]|int < 10737418240
+
+
+     - debug:
+         msg: 'Diretorio C: tem espaco livre. Iniciando a instalacao de updates'
+         
+
+     - name: Reiniciando o servidor parar evitar boot pendente
+       win_reboot:
+         reboot_timeout: 3600
+
+     - name: Instalando Updates nas maquinas de Producao (Isso pode levar um tempo)
+       win_updates:
+         category_names:
+           - SecurityUpdates
+           - CriticalUpdates
+           - UpdateRollups
+           - Updates
+         reboot: yes
+         reboot_timeout: 3600

@@ -1,0 +1,21 @@
+---
+- hosts: all #categoria das maquinas dentro do arquivo de inventario
+  gather_facts: no
+  serial: 30
+
+  tasks:
+  - name: Encontrando as VMs no Ambiente
+    vmware_guest_find:
+      validate_certs: no
+      name: "{{ inventory_hostname }}"
+    delegate_to: localhost
+    register: vm_folder
+    
+  - name: Removendo o snapshot das VMS
+    vmware_guest_snapshot:
+      validate_certs: False
+      datacenter: "DC-PRODUCAO"
+      folder: "/{{ vm_folder }}/vm/"
+      name: "{{ inventory_hostname }}"
+      state: remove_all
+    delegate_to: localhost
