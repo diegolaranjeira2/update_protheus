@@ -7,5 +7,5 @@
            
       
      - name: Preenchendo Inventario
-       shell: /root/inventory_creator/windows_inventory_creator.sh
+       shell: /root/update_protheus/windows_inventory_creator_protheus.sh
 
