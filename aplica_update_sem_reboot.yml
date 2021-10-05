@@ -1,7 +1,8 @@
 ---
 - hosts: all #categoria das maquinas dentro do arquivo de inventario
-  gather_facts: no
-  serial: 80
+  gather_facts: false
+  ignore_errors: true
+  serial: 100
     
   tasks:
            
