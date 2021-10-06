@@ -1,0 +1,9 @@
+---
+- hosts: all #categoria das maquinas dentro do arquivo de inventario
+  gather_facts: no
+  serial: 100
+    
+  tasks:
+  
+     - name: Iniciando servicos Protheus
+       win_shell: C:\outsourcing\totvs\cloud\scripts\protheus\actions\protheus_all_services.ps1 start
