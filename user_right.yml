@@ -1,0 +1,15 @@
+---
+- hosts: all #categoria das maquinas dentro do arquivo de inventario
+  gather_facts: no
+  serial: 80
+    
+  
+  tasks:
+  
+     - name: Garantindo Permissao para o usuario do Ansible
+       win_user_right:
+         name: SeDebugPrivilege
+         users:
+         - Administrators
+         action: set
+       
